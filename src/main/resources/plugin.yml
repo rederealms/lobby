@@ -1,0 +1,4 @@
+name: Lobby
+api-version: 1.21
+version: 1.0
+main: com.rederealms.lobby.LobbyPlugin
