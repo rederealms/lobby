@@ -3,9 +3,9 @@
 server-name: "lobby-1"
 
 redis:
-  host: "151.243.24.242"
-  port: 51485
-  password: "JKm52xspbL!I,Q,JJ/L1hW]u!y8l5]06"
+  host: ""
+  port: 12345
+  password: ""
   database: 0
   timeout: 2000
 
