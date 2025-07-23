@@ -3,11 +3,12 @@ package com.rederealms.lobby.events;
 import com.rederealms.core.common.minecraft.CoreSpigotPlugin;
 import com.rederealms.core.common.minecraft.misc.adapters.LuckPermsAdapter;
 import com.rederealms.core.common.minecraft.misc.lang.messages.Group;
-import com.rederealms.core.common.minecraft.misc.utils.ItemBuilder;
 import com.rederealms.lobby.LobbyPlugin;
 import com.rederealms.lobby.manager.ItemManager;
 import com.rederealms.lobby.manager.item.ItemCache;
+import com.rederealms.lobby.views.SelectServerView;
 import lombok.AllArgsConstructor;
+import me.devnatan.inventoryframework.ViewFrame;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
@@ -26,13 +27,13 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 @AllArgsConstructor
 public class LobbyListener implements Listener {
     private final LobbyPlugin plugin;
+    private final ViewFrame viewFrame;
 
     @EventHandler
      void onJoinPlayer(@NotNull PlayerJoinEvent event) {
@@ -74,7 +75,7 @@ public class LobbyListener implements Listener {
         int slot = player.getInventory().getHeldItemSlot();
 
         if (itemInHand.isSimilar(ItemCache.getItem(ItemManager.LobbyItemType.LOBBY_SERVERS, player))) {
-
+            plugin.getViewFrame().open(SelectServerView.class, player);
             event.setCancelled(true);
 
         } else if (itemInHand.isSimilar(ItemCache.getItem(ItemManager.LobbyItemType.LOBBY_PROFILE, player))) {
@@ -82,7 +83,7 @@ public class LobbyListener implements Listener {
             event.setCancelled(true);
 
         } else if (itemInHand.isSimilar(ItemCache.getItem(ItemManager.LobbyItemType.LOBBY_HUB, player))) {
-            player.sendMessage("§bVocê já está no hub!");
+            plugin.getViewFrame().open(com.rederealms.lobby.views.LobbySelectionView.class, player);
             event.setCancelled(true);
 
         } else if (itemInHand.isSimilar(ItemCache.getItem(ItemManager.LobbyItemType.HIDE_PLAYERS, player))) {

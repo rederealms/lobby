@@ -8,9 +8,9 @@ import me.saiintbrisson.minecraft.command.annotation.Command;
 import me.saiintbrisson.minecraft.command.command.Context;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class LocationCommand {
-
     private final LobbyPlugin plugin;
 
     public LocationCommand(LobbyPlugin plugin) {
@@ -19,7 +19,7 @@ public class LocationCommand {
 
     @Command(name = "location")
 
-    public void handle(Context<CommandSender> context) {
+    public void handle(@NotNull Context<CommandSender> context) {
         Player player = (Player) context.getSender();
         if(!player.hasPermission(Group.MANAGER.getPermission())) {
             Group.MANAGER.check(player);

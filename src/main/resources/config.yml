@@ -1,0 +1,30 @@
+# Nome único do servidor (deve ser diferente para cada lobby)
+# Exemplos: lobby-1, lobby-2, lobby-3, etc.
+server-name: "lobby-1"
+
+redis:
+  host: "151.243.24.242"
+  port: 51485
+  password: "JKm52xspbL!I,Q,JJ/L1hW]u!y8l5]06"
+  database: 0
+  timeout: 2000
+
+chat:
+  multi-server-enabled: true
+  system-prefix: "§8[§bSistema§8]§f"
+  cross-server-format: "§8[§e{server}§8] {prefix}{player}§8: §f{message}"
+  admin-notifications: true
+
+moderation:
+  global-chat-commands: true
+  messages:
+    chat-enabled: "§aO chat foi ativado por §e{admin} §ado servidor §b{server}§a."
+    chat-disabled: "§cO chat foi desativado por §e{admin} §cdo servidor §b{server}§c."
+    chat-vip-enabled: "§eO chat agora está apenas para VIPs por §e{admin} §edo servidor §b{server}§e."
+    chat-vip-disabled: "§aO chat agora está aberto para todos por §e{admin} §ado servidor §b{server}§a."
+    chat-cleared: "§aO chat foi limpo por §e{admin} §ado servidor §b{server}§a."
+
+debug:
+  redis-debug: false
+  chat-debug: false
+  command-debug: false
